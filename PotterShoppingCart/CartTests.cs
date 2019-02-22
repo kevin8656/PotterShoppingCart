@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PotterShoppingCart
@@ -47,17 +48,16 @@ namespace PotterShoppingCart
     {
         private int _basicPrize = 100;
 
+        private Dictionary<int, double> _discount = new Dictionary<int, double>
+        {
+            {0, 0}, {1, 1}, {2, 0.95}
+
+        };
+
         public int GetTotalPrize(List<Book> books)
         {
-            if (books.Count == 1)
-            {
-                return _basicPrize;
-            }
-            else if (books.Count == 2)
-            {
-                return (int)(_basicPrize * 2 * 0.95);
-            }
-            return 0;
+            var totalPrize = _basicPrize * books.Count;
+            return (int)(totalPrize * _discount[books.Count]);
         }
     }
 }
