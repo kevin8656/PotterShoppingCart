@@ -26,10 +26,8 @@ namespace PotterShoppingCart
         [TestMethod]
         public void GetTotalPrize_Buy_One_EP1_Should_return_100()
         {
-            var cart = new Cart();
             var books = new List<Book> { new Book() { ISBN = "1" } };
-            var actual = cart.GetTotalPrize(books);
-            Assert.AreEqual(100, actual);
+            TotalPrizeShouldBe(100, books);
         }
 
 
