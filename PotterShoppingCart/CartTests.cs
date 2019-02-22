@@ -67,6 +67,17 @@ namespace PotterShoppingCart
             };
             TotalPrizeShouldBe(375, books);
         }
+        [TestMethod]
+        public void GetTotalPrize_Buy_two_Ep1_and_Ep2_Should_return_290()
+        {
+            var books = new List<Book>
+            {
+                new Book() { ISBN = "1" },
+                new Book() { ISBN = "2" },
+                new Book() { ISBN = "1" },
+            };
+            TotalPrizeShouldBe(290, books);
+        }
         private static void TotalPrizeShouldBe(int expected, List<Book> books)
         {
             var cart = new Cart();
