@@ -16,13 +16,6 @@ namespace PotterShoppingCart
             TotalPrizeShouldBe(0, books);
         }
 
-        private static void TotalPrizeShouldBe(int expected, List<Book> books)
-        {
-            var cart = new Cart();
-            var actual = cart.GetTotalPrize(books);
-            Assert.AreEqual(expected, actual);
-        }
-
         [TestMethod]
         public void GetTotalPrize_Buy_One_EP1_Should_return_100()
         {
@@ -30,7 +23,19 @@ namespace PotterShoppingCart
             TotalPrizeShouldBe(100, books);
         }
 
+        [TestMethod]
+        public void GetTotalPrize_Buy_Two_Different_Episode_Should_return_190()
+        {
+            var books = new List<Book> { new Book() { ISBN = "1" }, new Book() { ISBN = "2" } };
+            TotalPrizeShouldBe(190, books);
+        }
 
+        private static void TotalPrizeShouldBe(int expected, List<Book> books)
+        {
+            var cart = new Cart();
+            var actual = cart.GetTotalPrize(books);
+            Assert.AreEqual(expected, actual);
+        }
     }
 
     public class Book
@@ -47,6 +52,10 @@ namespace PotterShoppingCart
             if (books.Count == 1)
             {
                 return _basicPrize;
+            }
+            else if (books.Count == 2)
+            {
+                return (int)(_basicPrize * 2 * 0.95);
             }
             return 0;
         }
