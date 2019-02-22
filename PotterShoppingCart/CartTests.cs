@@ -11,27 +11,24 @@ namespace PotterShoppingCart
         public void GetTotalPrize_Buy_Nothing_Should_return_0()
         {
             //Arrange
-            var cart = new Cart();
             var books = new List<Book>();
 
-            //Act
-            var actual = cart.GetTotalPrize(books);
+            TotalPrizeShouldBe(0, books);
+        }
 
-            //Assert
-            Assert.AreEqual(0, actual);
+        private static void TotalPrizeShouldBe(int expected, List<Book> books)
+        {
+            var cart = new Cart();
+            var actual = cart.GetTotalPrize(books);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
         public void GetTotalPrize_Buy_One_EP1_Should_return_100()
         {
-            //Arrange
             var cart = new Cart();
             var books = new List<Book> { new Book() { ISBN = "1" } };
-
-            //Act
             var actual = cart.GetTotalPrize(books);
-
-            //Assert
             Assert.AreEqual(100, actual);
         }
 
@@ -45,11 +42,13 @@ namespace PotterShoppingCart
 
     public class Cart
     {
+        private int _basicPrize = 100;
+
         public int GetTotalPrize(List<Book> books)
         {
             if (books.Count == 1)
             {
-                return 100;
+                return _basicPrize;
             }
             return 0;
         }
