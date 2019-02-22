@@ -41,6 +41,32 @@ namespace PotterShoppingCart
             TotalPrizeShouldBe(270, books);
         }
 
+        [TestMethod]
+        public void GetTotalPrize_Buy_Four_Different_Episode_Should_return_320()
+        {
+            var books = new List<Book>
+            {
+                new Book() { ISBN = "1" },
+                new Book() { ISBN = "2" },
+                new Book() { ISBN = "3" },
+                new Book() { ISBN = "4" },
+            };
+            TotalPrizeShouldBe(320, books);
+        }
+
+        [TestMethod]
+        public void GetTotalPrize_Buy_Five_Different_Episode_Should_return_375()
+        {
+            var books = new List<Book>
+            {
+                new Book() { ISBN = "1" },
+                new Book() { ISBN = "2" },
+                new Book() { ISBN = "3" },
+                new Book() { ISBN = "4" },
+                new Book() { ISBN = "5" },
+            };
+            TotalPrizeShouldBe(375, books);
+        }
         private static void TotalPrizeShouldBe(int expected, List<Book> books)
         {
             var cart = new Cart();

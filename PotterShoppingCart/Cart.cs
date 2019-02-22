@@ -8,7 +8,7 @@ namespace PotterShoppingCart
 
         private Dictionary<int, double> _discount = new Dictionary<int, double>
         {
-            {0, 0}, {1, 1}, {2, 0.95},{3, 0.9}
+            {0, 0}, {1, 1}, {2, 0.95},{3, 0.9},{4, 0.8},{5, 0.75}
         };
 
         public int GetTotalPrize(List<Book> books)
