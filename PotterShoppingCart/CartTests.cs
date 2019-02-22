@@ -11,9 +11,7 @@ namespace PotterShoppingCart
         [TestMethod]
         public void GetTotalPrize_Buy_Nothing_Should_return_0()
         {
-            //Arrange
             var books = new List<Book>();
-
             TotalPrizeShouldBe(0, books);
         }
 
@@ -51,7 +49,6 @@ namespace PotterShoppingCart
         private Dictionary<int, double> _discount = new Dictionary<int, double>
         {
             {0, 0}, {1, 1}, {2, 0.95}
-
         };
 
         public int GetTotalPrize(List<Book> books)
